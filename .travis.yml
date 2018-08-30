@@ -19,7 +19,7 @@ matrix:
     script:
       - docker --version
       - docker pull ubuntu:latest
-      - docker run -it --name ubuntu-latest ubuntu:latest    # container not properly run?
+      - docker run -it --name ubuntu-latest ubuntu:latest bash   # container not properly run?
       - docker ps -a
       - docker exec -t ubuntu-latest bash -c "lsb_release -dc"
 
@@ -35,11 +35,7 @@ matrix:
         packages:
           - docker-ce
     script:
-      - docker --version
-      - docker pull ubuntu:latest
-      - docker run -it --name ubuntu-latest ubuntu:latest
-      - docker ps -a
-      - docker exec -t ubuntu-latest bash -c "lsb_release -dc"
+#copy from debug at top later
 
   #macOS
   - name: macOS (Debug)
