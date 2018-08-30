@@ -20,6 +20,7 @@ matrix:
       - docker --version
       - docker pull ubuntu:latest
       - docker run ubuntu
+      - docker exec ubuntu bash -c "lsb_release -a"
       - docker ps -a
 
   - name: Ubuntu LTS on Docker (Release)
