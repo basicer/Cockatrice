@@ -23,9 +23,9 @@ matrix:
       - docker ps -a
       - docker exec -t ubuntu-latest bash -c "cat /etc/os-release"
       - docker exec -t ubuntu-latest bash -c "source /etc/os-release;
-                                              export $Name;
-                                              export $VERSION"
-      - docker exec -t ubuntu-latest bash -c "echo $NAME $VERSION"
+                                              export NAME;
+                                              export VERSION;
+                                              echo $NAME $VERSION"
       # see https://github.com/Cockatrice/Cockatrice/wiki/Compiling-Cockatrice-(Linux)#ubuntu-16xx17xx18xx
       #- docker exec -t ubuntu-latest bash -c ";"
       
