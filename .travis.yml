@@ -19,9 +19,9 @@ matrix:
     script:
       - docker --version
       - docker pull ubuntu:latest
-      - docker run ubuntu
-      - docker exec ubuntu bash -c "lsb_release -a"
+      - docker run -d --name ubuntu-latest
       - docker ps -a
+      - docker exec ubuntu-latest bash -c "lsb_release -dc"
 
   - name: Ubuntu LTS on Docker (Release)
     if: (branch = master AND NOT type = pull_request) OR tag IS present
@@ -37,8 +37,9 @@ matrix:
     script:
       - docker --version
       - docker pull ubuntu:latest
-      - docker run ubuntu
+      - docker run -d --name ubuntu-latest
       - docker ps -a
+      - docker exec ubuntu-latest bash -c "lsb_release -dc"
 
   #macOS
   - name: macOS (Debug)
