@@ -19,6 +19,7 @@ matrix:
     script:
       - docker --version
       - docker pull ubuntu:latest
+      - docker rename ubuntu:latest ubuntu
       - docker start ubuntu    # container not properly run?
       - docker ps -a
       - docker exec -t ubuntu bash -c "lsb_release -dc"
