@@ -16,13 +16,16 @@ matrix:
       apt:
         packages:
           - docker-ce
-    script:
+    script:    # mostly from https://romanvm.pythonanywhere.com/post/using-docker-travis-continuous-integration-25/
       - docker --version
       - docker pull ubuntu:latest  
       - docker run -d --name ubuntu-latest -v $(pwd):/travis ubuntu:latest tail -f /dev/null    # container not properly run
       - docker ps -a
-      - docker exec -t ubuntu-latest bash -c lsb_release -dc
-
+      - docker exec -t ubuntu-latest bash -c "cat /etc/lsb-release"
+      # see https://github.com/Cockatrice/Cockatrice/wiki/Compiling-Cockatrice-(Linux)#ubuntu-16xx17xx18xx
+      #- docker exec -t ubuntu-latest bash -c ";"
+      
+      
   - name: Ubuntu LTS on Docker (Release)
     if: (branch = master AND NOT type = pull_request) OR tag IS present
     os: linux
