@@ -19,7 +19,7 @@ matrix:
     script:
       - docker --version
       - docker pull ubuntu:latest
-      - docker run -d --name ubuntu-latest ubuntu:latest
+      - docker run --name ubuntu-latest ubuntu:latest
       - docker ps -a
       - docker exec -t ubuntu-latest bash -c "lsb_release -dc"
 
@@ -37,7 +37,7 @@ matrix:
     script:
       - docker --version
       - docker pull ubuntu:latest
-      - docker run -d --name ubuntu-latest ubuntu:latest
+      - docker run --name ubuntu-latest ubuntu:latest
       - docker ps -a
       - docker exec -t ubuntu-latest bash -c "lsb_release -dc"
 
