@@ -21,8 +21,9 @@ matrix:
       - docker pull ubuntu:latest  
       - docker run -d --name ubuntu-latest -v $(pwd):/travis ubuntu:latest tail -f /dev/null    # container not properly run
       - docker ps -a
-      - docker exec -t ubuntu-latest bash -c "cat /etc/os-release"
       - docker exec -t ubuntu-latest bash -c "sh /etc/os-release;
+                                              export NAME;
+                                              export VERSION;
                                               echo $NAME $VERSION"
       # see https://github.com/Cockatrice/Cockatrice/wiki/Compiling-Cockatrice-(Linux)#ubuntu-16xx17xx18xx
       #- docker exec -t ubuntu-latest bash -c ";"
