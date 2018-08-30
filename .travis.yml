@@ -19,7 +19,7 @@ matrix:
     script:
       - docker --version
       - docker pull ubuntu:latest
-      - docker run -it --name ubuntu-latest ubuntu:latest bash   # container not properly run?
+      - docker run -it --name ubuntu-latest ubuntu:latest bash -c "lsb_release -dc"    # container not properly run?
       - docker ps -a
       - docker exec -t ubuntu-latest bash -c "lsb_release -dc"
 
