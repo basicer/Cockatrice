@@ -12,14 +12,14 @@ matrix:
     language: generic
     services:
       - docker
-    addons:
+    addons:    # is newest docker needed at all?
       apt:
         packages:
           - docker-ce
     script:
       - docker --version
       - docker pull ubuntu:latest
-      - docker run --name ubuntu-latest ubuntu:latest
+      - docker run -it --name ubuntu-latest ubuntu:latest    # container not properly run?
       - docker ps -a
       - docker exec -t ubuntu-latest bash -c "lsb_release -dc"
 
@@ -37,7 +37,7 @@ matrix:
     script:
       - docker --version
       - docker pull ubuntu:latest
-      - docker run --name ubuntu-latest ubuntu:latest
+      - docker run -it --name ubuntu-latest ubuntu:latest
       - docker ps -a
       - docker exec -t ubuntu-latest bash -c "lsb_release -dc"
 
