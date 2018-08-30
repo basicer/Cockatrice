@@ -19,9 +19,9 @@ matrix:
     script:
       - docker --version
       - docker pull ubuntu:latest
-      - docker run -it --name ubuntu-latest ubuntu:latest bash -c "lsb_release -dc"    # container not properly run?
+      - docker start ubuntu    # container not properly run?
       - docker ps -a
-      - docker exec -t ubuntu-latest bash -c "lsb_release -dc"
+      - docker exec -t ubuntu bash -c "lsb_release -dc"
 
   - name: Ubuntu LTS on Docker (Release)
     if: (branch = master AND NOT type = pull_request) OR tag IS present
