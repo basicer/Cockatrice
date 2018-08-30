@@ -21,7 +21,7 @@ matrix:
       - docker pull ubuntu:latest  
       - docker run -d --name ubuntu-latest -v $(pwd):/travis ubuntu:latest tail -f /dev/null    # container not properly run
       - docker ps -a
-      - docker exec -t ubuntu-latest bash -c "cat /etc/lsb-release"
+      - docker exec -t ubuntu-latest bash -c "source /etc/os-release; echo ${VERSION_ID}"
       # see https://github.com/Cockatrice/Cockatrice/wiki/Compiling-Cockatrice-(Linux)#ubuntu-16xx17xx18xx
       #- docker exec -t ubuntu-latest bash -c ";"
       
