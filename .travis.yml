@@ -33,7 +33,7 @@ matrix:
                                               # qq seems to have no effect any longer?
       - docker exec -t ubuntu-latest bash -c "git clone git://github.com/Cockatrice/Cockatrice"
       - docker exec -t ubuntu-latest bash -c "cd Cockatrice; mkdir build; cd build"
-      - docker exec -t ubuntu-latest bash -c "cmake .. -DWITH_SERVER=1 -DCMAKE_BUILD_TYPE=Debug && make package"
+      - docker exec -t ubuntu-latest bash -c "cmake .. -DWITH_SERVER=1 -DCMAKE_BUILD_TYPE=$BUILDTYPE && make package"
       
   - name: Ubuntu LTS on Docker (Release)
     if: (branch = master AND NOT type = pull_request) OR tag IS present
