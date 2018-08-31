@@ -22,9 +22,7 @@ matrix:
       - docker run -d --name ubuntu-latest -v $(pwd):/travis ubuntu:latest tail -f /dev/null    # container not properly run
       - docker ps -a
       - docker exec -t ubuntu-latest bash -c "cat /etc/os-release"
-      - docker exec -t ubuntu-latest bash -c ".. /etc/os-release"
-      - docker exec -t ubuntu-latest bash -c "export NAME"
-      - docker exec -t ubuntu-latest bash -c "echo $NAME"
+      - docker exec -t ubuntu-latest bash -c ". /etc/os-release; export NAME; echo $NAME"     # needs to get combined to only output e.g. "Ubuntu 18.04.1 LTS (Bionic Beaver)" from the os-release file
       # see https://github.com/Cockatrice/Cockatrice/wiki/Compiling-Cockatrice-(Linux)#ubuntu-16xx17xx18xx
       #- docker exec -t ubuntu-latest bash -c ";"
       
