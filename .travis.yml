@@ -25,6 +25,11 @@ matrix:
       - docker exec -t ubuntu-latest bash -c ". /etc/os-release; echo $NAME $VERSION"    # https://forums.opensuse.org/showthread.php/509195-How-to-return-the-value-of-a-specific-os-release-property/page2
       # see https://github.com/Cockatrice/Cockatrice/wiki/Compiling-Cockatrice-(Linux)#ubuntu-16xx17xx18xx
       - docker exec -t ubuntu-latest bash -c "apt update"
+      - docker exec -t ubuntu-latest bash -c "apt install git build-essential g++ cmake;
+        apt install libprotobuf-dev protobuf-compiler;
+        apt install qt5-default qttools5-dev qttools5-dev-tools;
+        apt install qtmultimedia5-dev libqt5multimedia5-plugins libqt5svg5-dev;
+        apt install libqt5sql5-mysql libqt5websockets5-dev"
       - docker exec -t ubuntu-latest bash -c "git clone git://github.com/Cockatrice/Cockatrice"
       - docker exec -t ubuntu-latest bash -c "cd Cockatrice; mkdir build; cd build"
       
