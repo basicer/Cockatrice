@@ -21,10 +21,12 @@ matrix:
       - docker pull ubuntu:latest  
       - docker run -d --name ubuntu-latest -v $(pwd):/travis ubuntu:latest tail -f /dev/null    # container not properly run
       - docker ps -a
-      - docker exec -t ubuntu-latest bash -c "cat /etc/os-release"
-      - docker exec -t ubuntu-latest bash -c ". /etc/os-release; export NAME; echo ${NAME}"     # needs to get combined to only output e.g. "Ubuntu 18.04.1 LTS (Bionic Beaver)" from the os-release file
+      - docker exec -t ubuntu-latest bash -c "cat /etc/os-release"    # needs to get combined to only output e.g. "Ubuntu 18.04.1 LTS (Bionic Beaver)" from the os-release file
+      - docker exec -t ubuntu-latest bash -c ". /etc/os-release; echo $NAME $VERSION"    # https://forums.opensuse.org/showthread.php/509195-How-to-return-the-value-of-a-specific-os-release-property/page2
       # see https://github.com/Cockatrice/Cockatrice/wiki/Compiling-Cockatrice-(Linux)#ubuntu-16xx17xx18xx
-      #- docker exec -t ubuntu-latest bash -c ";"
+      - docker exec -t ubuntu-latest bash -c "apt update"
+      - docker exec -t ubuntu-latest bash -c "git clone git://github.com/Cockatrice/Cockatrice"
+      - docker exec -t ubuntu-latest bash -c "cd Cockatrice; mkdir build; cd build"
       
       
   - name: Ubuntu LTS on Docker (Release)
