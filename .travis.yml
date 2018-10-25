@@ -5,7 +5,7 @@ cache: ccache
 matrix:
   include:
   #Ubuntu
-  - name: Test Dockerfile
+  - name: Test Dockerfile (Debug)
     if: tag IS NOT present
     os: linux
     env: BUILDTYPE=Debug
@@ -19,8 +19,9 @@ matrix:
     script:    # https://www.techrepublic.com/article/how-to-use-dockerfiles/ and https://docs.docker.com/get-started/
       - docker --version
       - docker build -t servatrice .
+      #some test command like run container and ping port
       
-  - name: Ubuntu LTS on Docker (Release)
+  - name: Test Dockerfile (Release)
     if: (branch = master AND NOT type = pull_request) OR tag IS present
     os: linux
     env: BUILDTYPE=Release

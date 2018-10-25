@@ -4,16 +4,17 @@ MAINTAINER Gavin Bisesi <Daenyth@gmail.com>
 RUN apt update && apt install -y software-properties-common
 RUN apt-add-repository ppa:ubuntu-sdk-team/ppa
 RUN apt update && apt install -y\
-  build-essential g++\
+  build-essential\
+  g++\
   cmake\
   git\
   libprotobuf-dev\
   protobuf-compiler\
   qt5-default\
-  qtbase5-dev\
-  qttools5-dev-tools\
   qttools5-dev\
-  libqt5sql5-mysql
+  qttools5-dev-tools\
+  libqt5sql5-mysql\
+  libqt5websockets5-dev
 
 ENV dir /home/servatrice/code
 WORKDIR $dir
