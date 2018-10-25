@@ -3,7 +3,6 @@ MAINTAINER Gavin Bisesi <Daenyth@gmail.com>
 
 RUN apt-get update && apt-get install -y software-properties-common
 RUN apt-add-repository ppa:ubuntu-sdk-team/ppa
-RUN add-apt-repository -y ppa:smspillaz/cmake-master
 RUN apt-get update && apt-get install -y\
   build-essential g++\
   cmake\
