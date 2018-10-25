@@ -5,7 +5,7 @@ cache: ccache
 matrix:
   include:
   #Ubuntu
-  - name: Ubuntu LTS on Docker (Debug)
+  - name: Test Dockerfile
     if: tag IS NOT present
     os: linux
     env: BUILDTYPE=Debug
@@ -16,9 +16,9 @@ matrix:
       apt:
         packages:
           - docker-ce
-    script:    # mostly from https://romanvm.pythonanywhere.com/post/using-docker-travis-continuous-integration-25/
+    script:    # https://www.techrepublic.com/article/how-to-use-dockerfiles/ and https://docs.docker.com/get-started/
       - docker --version
-      - docker build -t cockatrice . 
+      - docker build -t servatrice .
       
   - name: Ubuntu LTS on Docker (Release)
     if: (branch = master AND NOT type = pull_request) OR tag IS present
