@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM ubuntu:xenial
 MAINTAINER Gavin Bisesi <Daenyth@gmail.com>
 
 RUN apt-get update && apt-get install -y software-properties-common
