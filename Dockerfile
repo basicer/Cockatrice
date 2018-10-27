@@ -1,7 +1,10 @@
 FROM ubuntu:latest
 MAINTAINER Gavin Bisesi <Daenyth@gmail.com>
 
-RUN sh /etc/os-release && echo $NAME $VERSION 
+RUN cat /etc/os-release
+RUN sh /etc/os-release
+RUN echo $PRETTY_NAME
+RUN echo $NAME $VERSION 
 RUN apt update && apt install -y software-properties-common
 RUN apt update && apt install -y\
   build-essential\
