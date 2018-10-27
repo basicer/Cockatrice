@@ -20,7 +20,7 @@ matrix:
       - docker --version
       - docker build -t servatrice .
       #some test command like run container, check running images and ping port etc.
-      - docker run -i -p 4747:4747/tcp -t servatrice:latest
+      - docker run -d -i -p 4747:4747/tcp -t servatrice:latest
       - docker ps -a
       
   - name: Test Dockerfile (Release)
