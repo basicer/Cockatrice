@@ -4,6 +4,7 @@ MAINTAINER Gavin Bisesi <Daenyth@gmail.com>
 RUN cat /etc/os-release
 RUN grep PRETTY_NAME /etc/os-release
 RUN echo $PRETTY_NAME
+RUN sh /etc/os-release | echo $NAME $VERSION
 RUN grep PRETTY_NAME /etc/os-release | cut -c 13-
 RUN grep NAME /etc/os-release | cut -c 6-
 RUN grep VERSION /etc/os-release | cut -c 9-
