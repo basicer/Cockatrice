@@ -1,4 +1,4 @@
-FROM ubuntu:xenial
+FROM ubuntu:latest
 MAINTAINER Gavin Bisesi <Daenyth@gmail.com>
 
 RUN apt update && apt install -y software-properties-common
@@ -18,7 +18,6 @@ RUN apt update && apt install -y\
 
 ENV dir /home/servatrice/code
 WORKDIR $dir
-RUN mkdir oracle
 COPY LICENSE LICENSE
 COPY CMakeLists.txt CMakeLists.txt
 COPY cmake/ cmake/
