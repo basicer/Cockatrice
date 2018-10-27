@@ -2,7 +2,6 @@ FROM ubuntu:latest
 MAINTAINER Gavin Bisesi <Daenyth@gmail.com>
 
 RUN apt update && apt install -y software-properties-common
-RUN apt-add-repository ppa:ubuntu-sdk-team/ppa
 RUN apt update && apt install -y\
   build-essential\
   g++\
