@@ -5,7 +5,9 @@ RUN cat /etc/os-release
 RUN grep PRETTY_NAME /etc/os-release
 RUN echo $PRETTY_NAME
 RUN grep PRETTY_NAME /etc/os-release | cut -c 13-
-RUN grep PRETTY_NAME /etc/os-release | cut -d" -f2
+RUN grep NAME /etc/os-release | cut -c 6-
+RUN grep VERSION /etc/os-release | cut -c 9-
+RUN grep PRETTY_NAME /etc/os-release | cut -d= -f2
 RUN apt update && apt install -y software-properties-common
 RUN apt update && apt install -y\
   build-essential\
