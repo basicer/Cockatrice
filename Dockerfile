@@ -2,10 +2,11 @@ FROM ubuntu:latest
 MAINTAINER Gavin Bisesi <Daenyth@gmail.com>
 
 RUN cat /etc/os-release
-RUN eval `grep PRETTY_NAME /etc/os-release`
-RUN echo $PRETTY_NAME
 RUN grep PRETTY_NAME /etc/os-release
 RUN echo $PRETTY_NAME
+RUN grep NAME /etc/os-release && grep VERSION /etc/os-release
+RUN grep PRETTY /etc/os-release | cut -d" -f2
+RUN grep PRETTY /etc/os-release | cut -c 13-
 RUN apt update && apt install -y software-properties-common
 RUN apt update && apt install -y\
   build-essential\
