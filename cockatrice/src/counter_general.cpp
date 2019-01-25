@@ -29,6 +29,7 @@ void GeneralCounter::paint(QPainter *painter, const QStyleOptionGraphicsItem * /
 
     painter->save();
     painter->resetTransform();
+    painter->scale(0.5, 0.5);
     painter->drawPixmap(QPoint(0, 0), pixmap);
 
     if (value) {

@@ -72,8 +72,10 @@ void AbstractCardItem::transformPainter(QPainter *painter, const QSizeF &transla
     QRectF totalBoundingRect = painter->combinedTransform().mapRect(boundingRect());
 
     painter->resetTransform();
+    painter->scale(0.5, 0.5);
 
     QTransform pixmapTransform;
+    pixmapTransform.scale(0.5, 0.5);
     pixmapTransform.translate(totalBoundingRect.width() / 2, totalBoundingRect.height() / 2);
     pixmapTransform.rotate(angle);
     pixmapTransform.translate(-translatedSize.width() / 2, -translatedSize.height() / 2);

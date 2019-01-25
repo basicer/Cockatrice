@@ -111,6 +111,7 @@ void PlayerTarget::paint(QPainter *painter, const QStyleOptionGraphicsItem * /*o
 
     painter->save();
     painter->resetTransform();
+    painter->scale(0.5, 0.5);
     painter->translate((translatedSize.width() - cachedPixmap.width()) / 2.0, 0);
     painter->drawPixmap(translatedRect, cachedPixmap, cachedPixmap.rect());
     painter->restore();
@@ -121,6 +122,7 @@ void PlayerTarget::paint(QPainter *painter, const QStyleOptionGraphicsItem * /*o
 
     painter->save();
     painter->resetTransform();
+    painter->scale(0.5, 0.5);
 
     QString name = QString::fromStdString(info->name());
     if (name.size() > 13)

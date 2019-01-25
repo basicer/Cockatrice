@@ -47,6 +47,7 @@ void PhaseButton::paint(QPainter *painter, const QStyleOptionGraphicsItem * /*op
     painter->drawRect(0, 0, width - 1, width - 1);
     painter->save();
     painter->resetTransform();
+    painter->scale(0.5, 0.5);
     painter->drawPixmap(iconPixmap.rect().translated(round(3 * scaleFactor), round(3 * scaleFactor)), iconPixmap,
                         iconPixmap.rect());
     painter->restore();
