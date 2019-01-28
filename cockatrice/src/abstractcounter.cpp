@@ -8,6 +8,8 @@
 #include <QGraphicsSceneMouseEvent>
 #include <QMenu>
 #include <QPainter>
+#include <QScriptEngine>
+#include <QScriptValue>
 
 AbstractCounter::AbstractCounter(Player *_player,
                                  int _id,
@@ -160,8 +162,13 @@ void AbstractCounter::setCounter()
 {
     bool ok;
     dialogSemaphore = true;
-    int newValue = QInputDialog::getInt(0, tr("Set counter"), tr("New value for counter '%1':").arg(name), value,
-                                        -2000000000, 2000000000, 1, &ok);
+    QString expression = QInputDialog::getText(0, tr("Set counter"), tr("New value for counter '%1':").arg(name),
+        QLineEdit::Normal, QString::number(value), &ok);
+
+    QScriptEngine lol;
+    QScriptValue result = lol.evaluate(expression);
+    int newValue = result.toInt32();
+
     if (deleteAfterDialog) {
         deleteLater();
         return;
