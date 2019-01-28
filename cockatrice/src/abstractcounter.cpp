@@ -166,6 +166,7 @@ void AbstractCounter::setCounter()
         QLineEdit::Normal, QString::number(value), &ok);
 
     QScriptEngine lol;
+    lol.setGlobalObject(lol.globalObject().property("Math"));
     QScriptValue result = lol.evaluate(expression);
     int newValue = result.toInt32();
 
