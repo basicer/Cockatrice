@@ -271,8 +271,7 @@ Response::ResponseCode Server_ProtocolHandler::processGameCommandContainer(const
     int maxCommandCountPerInterval = server->getMaxCommandCountPerInterval();
     GameEventStorage ges;
     Response::ResponseCode finalResponseCode = Response::RespOk;
-    for (int i = cont.game_command_size() - 1; i >= 0; --i) {
-        const GameCommand &sc = cont.game_command(i);
+    for (const GameCommand &sc : cont.game_command()) {
         logDebugMessage(QString("game %1 player %2: ").arg(cont.game_id()).arg(roomIdAndPlayerId.second) +
                         QString::fromStdString(sc.ShortDebugString()));
 
