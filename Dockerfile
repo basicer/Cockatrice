@@ -27,8 +27,9 @@ RUN cmake .. -DWITH_SERVER=1 -DWITH_CLIENT=0 -DWITH_ORACLE=0 &&\
   make &&\
   make install
 
+COPY servatrice.ini /servatrice.ini
 WORKDIR /home/servatrice
 
 EXPOSE 4747
 
-CMD [ "servatrice", "--log-to-console" ]
+CMD [ "servatrice", "--log-to-console", "--config", "/servatrice.ini" ]

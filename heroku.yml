@@ -2,4 +2,4 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: servatrice --log-to-console
+  web: servatrice --log-to-console --config /servatrice.ini
