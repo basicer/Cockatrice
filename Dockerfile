@@ -14,8 +14,13 @@ RUN apt-get update && apt-get install -y\
   qttools5-dev-tools\
   qttools5-dev
 
-COPY . /home/servatrice/code/
 WORKDIR /home/servatrice/code
+COPY LICENSE LICENSE
+COPY CMakeLists.txt CMakeLists.txt
+COPY cmake/ cmake/
+COPY common/ common/
+COPY servatrice/ servatrice/
+COPY README.md README.md
 
 WORKDIR build
 RUN cmake .. -DWITH_SERVER=1 -DWITH_CLIENT=0 -DWITH_ORACLE=0 &&\
