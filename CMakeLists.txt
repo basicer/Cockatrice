@@ -333,6 +333,7 @@ add_subdirectory(${CMAKE_SOURCE_DIR}/libcockatrice_deck_list ${CMAKE_BINARY_DIR}
 add_subdirectory(${CMAKE_SOURCE_DIR}/libcockatrice_rng ${CMAKE_BINARY_DIR}/libcockatrice_rng)
 add_subdirectory(${CMAKE_SOURCE_DIR}/libcockatrice_card ${CMAKE_BINARY_DIR}/libcockatrice_card)
 add_subdirectory(${CMAKE_SOURCE_DIR}/libcockatrice_utility ${CMAKE_BINARY_DIR}/libcockatrice_utility)
+add_subdirectory(${CMAKE_SOURCE_DIR}/libcockatrice_scripting ${CMAKE_BINARY_DIR}/libcockatrice_scripting)
 if(WITH_ORACLE OR WITH_CLIENT)
   add_subdirectory(${CMAKE_SOURCE_DIR}/libcockatrice_settings ${CMAKE_BINARY_DIR}/libcockatrice_settings)
   add_subdirectory(${CMAKE_SOURCE_DIR}/libcockatrice_models ${CMAKE_BINARY_DIR}/libcockatrice_models)

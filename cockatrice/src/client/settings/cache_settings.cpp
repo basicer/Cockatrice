@@ -527,6 +527,13 @@ void SettingsCache::setReplaysPath(const QString &_replaysPath)
     settings->setValue("paths/replays", replaysPath);
 }
 
+void SettingsCache::setScriptsPath(const QString &_scriptsPath)
+{
+    scriptsPath = _scriptsPath;
+    settings->setValue("paths/scripts", scriptsPath);
+    emit scriptsPathChanged(scriptsPath);
+}
+
 void SettingsCache::setThemesPath(const QString &_themesPath)
 {
     themesPath = _themesPath;
@@ -1553,6 +1560,7 @@ void SettingsCache::loadPaths()
     deckPath = getSafeConfigPath("paths/decks", dataPath + "/decks/");
     filtersPath = getSafeConfigPath("paths/filters", dataPath + "/filters/");
     replaysPath = getSafeConfigPath("paths/replays", dataPath + "/replays/");
+    scriptsPath = getSafeConfigPath("paths/scripts", dataPath + "/scripts/");
     themesPath = getSafeConfigPath("paths/themes", dataPath + "/themes/");
     picsPath = getSafeConfigPath("paths/pics", dataPath + "/pics/");
     redirectCachePath = getSafeConfigPath("paths/redirects", getCachePath() + "/redirects/");

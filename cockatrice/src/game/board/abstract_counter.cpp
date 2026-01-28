@@ -14,7 +14,6 @@
 #include <QString>
 #include <libcockatrice/protocol/pb/command_inc_counter.pb.h>
 #include <libcockatrice/protocol/pb/command_set_counter.pb.h>
-#include <libcockatrice/utility/expression.h>
 
 AbstractCounter::AbstractCounter(Player *_player,
                                  int _id,
@@ -192,8 +191,7 @@ void AbstractCounter::setCounter()
     if (!ok)
         return;
 
-    Expression exp(value);
-    int newValue = static_cast<int>(exp.parse(dialog.textValue()));
+    int newValue = static_cast<int>(player->getGame()->evaluateExpression(dialog.textValue(), value));
 
     Command_SetCounter cmd;
     cmd.set_counter_id(id);

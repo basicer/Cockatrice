@@ -2,10 +2,12 @@
 
 #include "player/player.h"
 
+
 AbstractGame::AbstractGame(TabGame *_tab) : tab(_tab)
 {
     gameMetaInfo = new GameMetaInfo(this);
     gameEventHandler = new GameEventHandler(this);
+    scriptManager = new ScriptManager(this);
 
     activeCard = nullptr;
 }

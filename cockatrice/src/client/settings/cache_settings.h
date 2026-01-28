@@ -145,6 +145,7 @@ signals:
     void homeTabBackgroundShuffleFrequencyChanged();
     void homeTabDisplayCardNameChanged();
     void picDownloadChanged();
+    void scriptsPathChanged(const QString &newPath);
     void showStatusBarChanged(bool state);
     void showGameSelectorFilterToolbarChanged(bool state);
     void displayCardNamesChanged();
@@ -209,7 +210,7 @@ private:
     QByteArray tokenDialogGeometry;
     QByteArray setsDialogGeometry;
     QString lang;
-    QString deckPath, filtersPath, replaysPath, picsPath, redirectCachePath, customPicsPath, cardDatabasePath,
+    QString deckPath, filtersPath, replaysPath, scriptsPath, picsPath, redirectCachePath, customPicsPath, cardDatabasePath,
         customCardDatabasePath, themesPath, spoilerDatabasePath, tokenDatabasePath, themeName, homeTabBackgroundSource;
     bool tabVisualDeckStorageOpen, tabServerOpen, tabAccountOpen, tabDeckStorageOpen, tabReplaysOpen, tabAdminOpen,
         tabLogOpen;
@@ -372,6 +373,10 @@ public:
     [[nodiscard]] QString getReplaysPath() const
     {
         return replaysPath;
+    }
+    [[nodiscard]] QString getScriptsPath() const
+    {
+        return scriptsPath;
     }
     [[nodiscard]] QString getThemesPath() const
     {
@@ -1004,6 +1009,7 @@ public slots:
     void setDeckPath(const QString &_deckPath);
     void setFiltersPath(const QString &_filtersPath);
     void setReplaysPath(const QString &_replaysPath);
+    void setScriptsPath(const QString &_scriptsPath);
     void setThemesPath(const QString &_themesPath);
     void setCustomCardDatabasePath(const QString &_customCardDatabasePath);
     void setPicsPath(const QString &_picsPath);

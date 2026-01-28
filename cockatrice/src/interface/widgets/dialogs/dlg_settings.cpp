@@ -175,6 +175,11 @@ GeneralSettingsPage::GeneralSettingsPage()
     auto *tokenDatabasePathButton = new QPushButton("...");
     connect(tokenDatabasePathButton, &QPushButton::clicked, this, &GeneralSettingsPage::tokenDatabasePathButtonClicked);
 
+    scriptsPathEdit = new QLineEdit(settings.getScriptsPath());
+    scriptsPathEdit->setReadOnly(true);
+    auto *scriptsPathButton = new QPushButton("...");
+    connect(scriptsPathButton, &QPushButton::clicked, this, &GeneralSettingsPage::scriptsPathButtonClicked);
+
     // Required init here to avoid crashing on Portable builds
     resetAllPathsButton = new QPushButton;
 
@@ -222,9 +227,13 @@ GeneralSettingsPage::GeneralSettingsPage()
     pathsGrid->addWidget(&tokenDatabasePathLabel, 6, 0);
     pathsGrid->addWidget(tokenDatabasePathEdit, 6, 1);
     pathsGrid->addWidget(tokenDatabasePathButton, 6, 2);
+    pathsGrid->addWidget(&scriptsPathLabel, 7, 0);
+    pathsGrid->addWidget(scriptsPathEdit, 7, 1);
+    pathsGrid->addWidget(scriptsPathButton, 7, 2);
+
     if (!isPortable) {
-        pathsGrid->addWidget(resetAllPathsButton, 7, 0);
-        pathsGrid->addWidget(allPathsResetLabel, 7, 1);
+        pathsGrid->addWidget(resetAllPathsButton, 8, 0);
+        pathsGrid->addWidget(allPathsResetLabel, 8, 1);
     }
     pathsGroupBox = new QGroupBox;
     pathsGroupBox->setLayout(pathsGrid);
@@ -339,6 +348,16 @@ void GeneralSettingsPage::tokenDatabasePathButtonClicked()
     SettingsCache::instance().setTokenDatabasePath(path);
 }
 
+void GeneralSettingsPage::scriptsPathButtonClicked()
+{
+    QString path = QFileDialog::getExistingDirectory(this, tr("Choose path"), scriptsPathEdit->text());
+    if (path.isEmpty())
+        return;
+
+    scriptsPathEdit->setText(path);
+    SettingsCache::instance().setScriptsPath(path);
+}
+
 void GeneralSettingsPage::resetAllPathsClicked()
 {
     SettingsCache &settings = SettingsCache::instance();
@@ -349,6 +368,7 @@ void GeneralSettingsPage::resetAllPathsClicked()
     cardDatabasePathEdit->setText(settings.getCardDatabasePath());
     customCardDatabasePathEdit->setText(settings.getCustomCardDatabasePath());
     tokenDatabasePathEdit->setText(settings.getTokenDatabasePath());
+    scriptsPathEdit->setText(settings.getScriptsPath());
     allPathsResetLabel->setVisible(true);
 }
 
@@ -373,6 +393,7 @@ void GeneralSettingsPage::retranslateUi()
     filtersPathLabel.setText(tr("Filters directory:"));
     replaysPathLabel.setText(tr("Replays directory:"));
     picsPathLabel.setText(tr("Pictures directory:"));
+    scriptsPathLabel.setText(tr("Scripts directory:"));
     cardDatabasePathLabel.setText(tr("Card database:"));
     customCardDatabasePathLabel.setText(tr("Custom database directory:"));
     tokenDatabasePathLabel.setText(tr("Token database:"));

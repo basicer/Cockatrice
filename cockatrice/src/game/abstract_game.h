@@ -14,6 +14,7 @@
 
 #include <QObject>
 #include <libcockatrice/protocol/pb/game_replay.pb.h>
+#include <libcockatrice/scripting/script_manager.h>
 
 class CardItem;
 class TabGame;
@@ -30,6 +31,7 @@ public:
     GameEventHandler *gameEventHandler;
     PlayerManager *playerManager;
     CardItem *activeCard;
+    ScriptManager *scriptManager;
 
     TabGame *getTab() const
     {
@@ -69,6 +71,12 @@ public:
     {
         return activeCard;
     }
+
+    double evaluateExpression(const QString &expression, double x)
+    {
+        return scriptManager->evaluateLegacyExpression(expression, x);
+    }
+
 };
 
 #endif // COCKATRICE_ABSTRACT_GAME_H

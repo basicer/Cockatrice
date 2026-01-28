@@ -57,6 +57,7 @@ private slots:
     void cardDatabasePathButtonClicked();
     void customCardDatabaseButtonClicked();
     void tokenDatabasePathButtonClicked();
+    void scriptsPathButtonClicked();
     void resetAllPathsClicked();
     void languageBoxChanged(int index);
 
@@ -70,6 +71,7 @@ private:
     QLineEdit *cardDatabasePathEdit;
     QLineEdit *customCardDatabasePathEdit;
     QLineEdit *tokenDatabasePathEdit;
+    QLineEdit *scriptsPathEdit;
     QPushButton *resetAllPathsButton;
     QLabel *allPathsResetLabel;
     QGroupBox *personalGroupBox;
@@ -92,6 +94,7 @@ private:
     QLabel cardDatabasePathLabel;
     QLabel customCardDatabasePathLabel;
     QLabel tokenDatabasePathLabel;
+    QLabel scriptsPathLabel;
     QLabel updateReleaseChannelLabel;
     QLabel advertiseTranslationPageLabel;
     QCheckBox showTipsOnStartup;

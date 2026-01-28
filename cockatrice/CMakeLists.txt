@@ -3,6 +3,7 @@
 # provides the cockatrice binary
 
 project(Cockatrice VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}")
+find_package(Lua REQUIRED)
 
 set(cockatrice_SOURCES
     ${VERSION_STRING_CPP}
@@ -430,7 +431,9 @@ if(Qt5_FOUND)
     libcockatrice_models
     libcockatrice_rng
     libcockatrice_settings
+    libcockatrice_scripting
     ${COCKATRICE_QT_MODULES}
+    ${LUA_LIBRARIES}
   )
 else()
   target_link_libraries(
@@ -443,9 +446,12 @@ else()
            libcockatrice_models
            libcockatrice_rng
            libcockatrice_settings
+           libcockatrice_scripting
            ${COCKATRICE_QT_MODULES}
+           ${LUA_LIBRARIES}
   )
 endif()
+
 
 if(UNIX)
   if(APPLE)

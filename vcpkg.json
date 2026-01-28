@@ -3,9 +3,11 @@
   "dependencies": [
     "gtest",
     "liblzma",
+    "lua",
     "openssl",
     "protobuf",
     "pthreads",
+    "sol2",
     "zlib"
   ]
 }

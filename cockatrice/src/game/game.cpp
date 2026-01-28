@@ -1,7 +1,7 @@
 #include "game.h"
 
 #include "../interface/widgets/tabs/tab_game.h"
-
+#include "../client/settings/cache_settings.h"
 #include <libcockatrice/protocol/pb/event_game_joined.pb.h>
 
 Game::Game(TabGame *_tab,
@@ -17,4 +17,9 @@ Game::Game(TabGame *_tab,
     connect(gameMetaInfo, &GameMetaInfo::startedChanged, gameState, &GameState::onStartedChanged);
     playerManager = new PlayerManager(this, event.player_id(), event.judge(), event.spectator());
     gameMetaInfo->setStarted(false);
+
+    scriptManager->setScriptsPath(SettingsCache::instance().getScriptsPath());
+    connect(&SettingsCache::instance(), &SettingsCache::scriptsPathChanged, this, [this](const QString &newPath) {
+        scriptManager->setScriptsPath(newPath);
+    });
 }

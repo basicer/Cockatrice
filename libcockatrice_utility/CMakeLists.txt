@@ -5,12 +5,12 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
-set(UTILITY_SOURCES libcockatrice/utility/expression.cpp libcockatrice/utility/levenshtein.cpp
+set(UTILITY_SOURCES libcockatrice/utility/levenshtein.cpp
                     libcockatrice/utility/passwordhasher.cpp
 )
 
 set(UTILITY_HEADERS
-    libcockatrice/utility/color.h libcockatrice/utility/expression.h libcockatrice/utility/levenshtein.h
+    libcockatrice/utility/color.h libcockatrice/utility/levenshtein.h
     libcockatrice/utility/macros.h libcockatrice/utility/passwordhasher.h libcockatrice/utility/trice_limits.h
 )
 
