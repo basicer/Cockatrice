@@ -1,6 +1,7 @@
 #include "dlg_connect.h"
 
 #include "../../../client/settings/cache_settings.h"
+#include "../../interface/pixel_map_generator.h"
 
 #include <QCheckBox>
 #include <QComboBox>
@@ -28,7 +29,7 @@ DlgConnect::DlgConnect(QWidget *parent) : QDialog(parent)
 
     hps = new HandlePublicServers(this);
     btnRefreshServers = new QPushButton(this);
-    btnRefreshServers->setIcon(QPixmap("theme:icons/sync"));
+    btnRefreshServers->setIcon(loadColorAdjustedPixmap("theme:icons/sync"));
     btnRefreshServers->setToolTip(tr("Refresh the server list with known public servers"));
     btnRefreshServers->setFixedWidth(30);
 
@@ -98,7 +99,7 @@ DlgConnect::DlgConnect(QWidget *parent) : QDialog(parent)
     updateDisplayInfo(previousHosts->currentText());
 
     btnForgotPassword = new QPushButton(this);
-    btnForgotPassword->setIcon(QPixmap("theme:icons/forgot_password"));
+    btnForgotPassword->setIcon(loadColorAdjustedPixmap("theme:icons/forgot_password"));
     btnForgotPassword->setToolTip(tr("Reset Password"));
     btnForgotPassword->setFixedWidth(30);
     connect(btnForgotPassword, &QPushButton::released, this, &DlgConnect::actForgotPassword);

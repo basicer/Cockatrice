@@ -1,5 +1,6 @@
 #include "visual_deck_display_options_widget.h"
 
+#include "../../interface/pixel_map_generator.h"
 #include "../tabs/visual_deck_editor/tab_deck_editor_visual.h"
 
 #include <libcockatrice/utility/qt_utils.h>
@@ -45,7 +46,7 @@ VisualDeckDisplayOptionsWidget::VisualDeckDisplayOptionsWidget(QWidget *parent) 
     sortByLabel = new QLabel(this);
 
     sortCriteriaButton = new SettingsButtonWidget(this);
-    sortCriteriaButton->setButtonIcon(QPixmap("theme:icons/sort_arrow_down"));
+    sortCriteriaButton->setButtonIcon(loadColorAdjustedPixmap("theme:icons/sort_arrow_down"));
 
     sortLabel = new QLabel(sortCriteriaButton);
     sortLabel->setWordWrap(true);

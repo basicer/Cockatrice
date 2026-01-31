@@ -1,5 +1,6 @@
 #include "game_selector.h"
 
+#include "../interface/pixel_map_generator.h"
 #include "../interface/widgets/dialogs/dlg_create_game.h"
 #include "../interface/widgets/dialogs/dlg_filter_games.h"
 #include "../interface/widgets/tabs/tab_account.h"
@@ -84,7 +85,7 @@ GameSelector::GameSelector(AbstractClient *_client,
     }
 
     filterButton = new QPushButton;
-    filterButton->setIcon(QPixmap("theme:icons/search"));
+    filterButton->setIcon(loadColorAdjustedPixmap("theme:icons/search"));
     connect(filterButton, &QPushButton::clicked, this, &GameSelector::actSetFilter);
     clearFilterButton = new QPushButton;
     clearFilterButton->setIcon(QPixmap("theme:icons/clearsearch"));

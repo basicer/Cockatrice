@@ -45,7 +45,7 @@ void DeckPreviewTagAdditionWidget::paintEvent(QPaintEvent *event)
     QPainter painter(this);
 
     // Set background color
-    QColor backgroundColor = Qt::lightGray;
+    QColor backgroundColor = palette().button().color();
     painter.setBrush(backgroundColor);
     painter.setPen(Qt::NoPen);
 

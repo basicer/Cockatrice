@@ -2,6 +2,7 @@
 
 #include "../../../client/settings/cache_settings.h"
 #include "../../deck_loader/deck_loader.h"
+#include "../../interface/pixel_map_generator.h"
 #include "../interface/widgets/server/remote/remote_decklist_tree_widget.h"
 #include "../interface/widgets/utility/get_text_with_max.h"
 
@@ -106,7 +107,7 @@ TabDeckStorage::TabDeckStorage(TabSupervisor *_tabSupervisor,
     aOpenLocalDeck->setIcon(QPixmap("theme:icons/pencil"));
     connect(aOpenLocalDeck, &QAction::triggered, this, &TabDeckStorage::actOpenLocalDeck);
     aRenameLocal = new QAction(this);
-    aRenameLocal->setIcon(QPixmap("theme:icons/rename"));
+    aRenameLocal->setIcon(loadColorAdjustedPixmap("theme:icons/rename"));
     connect(aRenameLocal, &QAction::triggered, this, &TabDeckStorage::actRenameLocal);
     aUpload = new QAction(this);
     aUpload->setIcon(QPixmap("theme:icons/arrow_right_green"));

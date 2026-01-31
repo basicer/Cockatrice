@@ -1,6 +1,7 @@
 #include "tab_replays.h"
 
 #include "../../../client/settings/cache_settings.h"
+#include "../../interface/pixel_map_generator.h"
 #include "../interface/widgets/server/remote/remote_replay_list_tree_widget.h"
 #include "tab_game.h"
 
@@ -99,11 +100,11 @@ QGroupBox *TabReplays::createLeftLayout()
 
     // Left side actions
     aOpenLocalReplay = new QAction(this);
-    aOpenLocalReplay->setIcon(QPixmap("theme:icons/view"));
+    aOpenLocalReplay->setIcon(loadColorAdjustedPixmap("theme:icons/view"));
     connect(aOpenLocalReplay, &QAction::triggered, this, &TabReplays::actOpenLocalReplay);
     connect(localDirView, &QTreeView::doubleClicked, this, &TabReplays::actOpenLocalReplay);
     aRenameLocal = new QAction(this);
-    aRenameLocal->setIcon(QPixmap("theme:icons/rename"));
+    aRenameLocal->setIcon(loadColorAdjustedPixmap("theme:icons/rename"));
     connect(aRenameLocal, &QAction::triggered, this, &TabReplays::actRenameLocal);
     aNewLocalFolder = new QAction(this);
     aNewLocalFolder->setIcon(qApp->style()->standardIcon(QStyle::SP_FileDialogNewFolder));
@@ -161,7 +162,7 @@ QGroupBox *TabReplays::createRightLayout()
 
     // Right side actions
     aOpenRemoteReplay = new QAction(this);
-    aOpenRemoteReplay->setIcon(QPixmap("theme:icons/view"));
+    aOpenRemoteReplay->setIcon(loadColorAdjustedPixmap("theme:icons/view"));
     connect(aOpenRemoteReplay, &QAction::triggered, this, &TabReplays::actOpenRemoteReplay);
     connect(serverDirView, &QTreeView::doubleClicked, this, &TabReplays::actOpenRemoteReplay);
     aDownload = new QAction(this);

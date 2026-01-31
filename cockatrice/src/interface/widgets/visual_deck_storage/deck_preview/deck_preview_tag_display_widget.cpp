@@ -76,7 +76,7 @@ void DeckPreviewTagDisplayWidget::paintEvent(QPaintEvent *event)
 
     switch (state) {
         case TagState::Selected:
-            backgroundColor = QColor(173, 216, 230); // Light blue
+            backgroundColor = palette().highlight().color();
             borderColor = Qt::blue;
             borderWidth = 2;
             break;
@@ -87,7 +87,7 @@ void DeckPreviewTagDisplayWidget::paintEvent(QPaintEvent *event)
             break;
         case TagState::NotSelected:
         default:
-            backgroundColor = Qt::white;
+            backgroundColor = palette().button().color();
             borderColor = Qt::gray;
             borderWidth = 1;
             break;
@@ -112,20 +112,8 @@ void DeckPreviewTagDisplayWidget::paintEvent(QPaintEvent *event)
     int margin = 10; // Left and right margins
     QRect textRect(margin, 0, width() - margin * 2, height());
 
-    // Draw the text with a black border for better legibility
-    painter.setPen(Qt::black);
-
-    // Draw text border by offsetting
-    for (int dx = -1; dx <= 1; ++dx) {
-        for (int dy = -1; dy <= 1; ++dy) {
-            if (dx != 0 || dy != 0) {
-                painter.drawText(textRect.translated(dx, dy), Qt::AlignLeft | Qt::AlignVCenter, tagName);
-            }
-        }
-    }
-
     // Draw the actual text
-    painter.setPen(Qt::white);
+    painter.setPen(palette().text().color());
     painter.drawText(textRect, Qt::AlignLeft | Qt::AlignVCenter, tagName);
 
     QWidget::paintEvent(event);

@@ -1,6 +1,7 @@
 #include "visual_deck_storage_widget.h"
 
 #include "../../../client/settings/cache_settings.h"
+#include "../../interface/pixel_map_generator.h"
 #include "../quick_settings/settings_button_widget.h"
 #include "deck_preview/deck_preview_widget.h"
 #include "visual_deck_storage_folder_display_widget.h"
@@ -36,7 +37,7 @@ VisualDeckStorageWidget::VisualDeckStorageWidget(QWidget *parent) : QWidget(pare
     searchWidget = new VisualDeckStorageSearchWidget(this);
 
     refreshButton = new QToolButton(this);
-    refreshButton->setIcon(QPixmap("theme:icons/reload"));
+    refreshButton->setIcon(loadColorAdjustedPixmap("theme:icons/reload"));
     refreshButton->setFixedSize(32, 32);
     connect(refreshButton, &QPushButton::clicked, this, &VisualDeckStorageWidget::refreshIfPossible);
 

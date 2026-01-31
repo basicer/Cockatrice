@@ -1,6 +1,7 @@
 #include "deck_editor_deck_dock_widget.h"
 
 #include "../../../client/settings/cache_settings.h"
+#include "../../interface/pixel_map_generator.h"
 #include "deck_list_style_proxy.h"
 #include "deck_state_manager.h"
 
@@ -197,7 +198,7 @@ void DeckEditorDeckDockWidget::createDeckDock()
     tbRemoveCard->setDefaultAction(aRemoveCard);
 
     aSwapCard = new QAction(QString(), this);
-    aSwapCard->setIcon(QPixmap("theme:icons/swap"));
+    aSwapCard->setIcon(loadColorAdjustedPixmap("theme:icons/swap"));
     connect(aSwapCard, &QAction::triggered, this, &DeckEditorDeckDockWidget::actSwapSelection);
     auto *tbSwapCard = new QToolButton(this);
     tbSwapCard->setDefaultAction(aSwapCard);

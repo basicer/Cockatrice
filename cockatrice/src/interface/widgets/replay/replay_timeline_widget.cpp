@@ -57,7 +57,7 @@ void ReplayTimelineWidget::paintEvent(QPaintEvent * /* event */)
         path.lineTo(qRound(i * binWidth), (height() - 1) * (1.0 - (qreal)histogram[i] / maxBinValue));
     path.lineTo(width() - 1, height() - 1);
     path.lineTo(0, height() - 1);
-    painter.fillPath(path, Qt::black);
+    painter.fillPath(path, palette().text().color());
 
     const QColor barColor = QColor::fromHsv(120, 255, 255, 100);
     quint64 w = (quint64)(width() - 1) * (quint64)currentVisualTime / maxTime;
