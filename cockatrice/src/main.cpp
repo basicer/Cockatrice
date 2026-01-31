@@ -227,8 +227,12 @@ int main(int argc, char *argv[])
     parser.addVersionOption();
 
     parser.addOptions(
-        {{{"c", "connect"}, QCoreApplication::translate("main", "Connect on startup"), "user:pass@host:port"},
-         {{"d", "debug-output"}, QCoreApplication::translate("main", "Debug to file")}});
+        {{{"c", "connect"}, QCoreApplication::translate("main", "Connect on startup."), "user:pass@host:port"},
+         {{"d", "debug-output"}, QCoreApplication::translate("main", "Debug to file.")},
+         {{"l", "local-game"},
+          QCoreApplication::translate("main", "Start a local game with <players>."),
+          "players",
+          "1"}});
 
     parser.process(app);
 
@@ -256,6 +260,9 @@ int main(int argc, char *argv[])
     MainWindow ui;
     if (parser.isSet("connect")) {
         ui.setConnectTo(parser.value("connect"));
+    }
+    if (parser.isSet("local-game")) {
+        ui.setStartLocalGameOnLaunch(parser.value("local-game").toInt());
     }
     qCInfo(MainLog) << "MainWindow constructor finished";
 

@@ -912,6 +912,9 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::startupConfigCheck()
 {
+    if (doStartLocalGameOnStartup) {
+        startLocalGame(doStartLocalGameOnStartup);
+    }
     if (SettingsCache::instance().debug().getLocalGameOnStartup()) {
         startLocalGame(SettingsCache::instance().debug().getLocalGamePlayerCount());
     }

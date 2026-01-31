@@ -161,12 +161,17 @@ private:
     GameReplay *replay;
     DlgTipOfTheDay *tip;
     QUrl connectTo;
+    int doStartLocalGameOnStartup = 0;
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     void setConnectTo(QString url)
     {
         connectTo = QUrl(QString("cockatrice://%1").arg(url));
+    }
+    void setStartLocalGameOnLaunch(int players)
+    {
+        doStartLocalGameOnStartup = players;
     }
     ~MainWindow() override;
 
