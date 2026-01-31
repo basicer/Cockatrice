@@ -42,7 +42,7 @@ public slots:
 
 signals:
     void hovered(AbstractCardItem *card);
-    void showCardInfoPopup(const QPoint &pos, const CardRef &cardRef);
+    void showCardInfoPopup(const QPoint &pos, const CardRef &cardRef, bool showDetails = true);
     void deleteCardInfoPopup(QString cardName);
     void sigPixmapUpdated();
     void cardShiftClicked(QString cardName);

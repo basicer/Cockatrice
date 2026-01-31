@@ -28,7 +28,7 @@ protected:
         tabMenus.append(menu);
     }
 protected slots:
-    void showCardInfoPopup(const QPoint &pos, const CardRef &cardRef);
+    void showCardInfoPopup(const QPoint &pos, const CardRef &cardRef, bool showDetails = false);
     void deleteCardInfoPopup(const QString &cardName);
 
 private:

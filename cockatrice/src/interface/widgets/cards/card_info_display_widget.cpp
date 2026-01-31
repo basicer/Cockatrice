@@ -9,10 +9,25 @@
 #include <QVBoxLayout>
 #include <libcockatrice/card/database/card_database_manager.h>
 
-CardInfoDisplayWidget::CardInfoDisplayWidget(const CardRef &cardRef, QWidget *parent, Qt::WindowFlags flags)
+CardInfoDisplayWidget::CardInfoDisplayWidget(const CardRef &cardRef,
+                                             QWidget *parent,
+                                             bool showDetails,
+                                             Qt::WindowFlags flags)
     : QFrame(parent, flags), aspectRatio((qreal)CARD_HEIGHT / (qreal)CARD_WIDTH)
 {
-    setContentsMargins(3, 3, 3, 3);
+
+    int pixmapHeight = QGuiApplication::primaryScreen()->geometry().height() / 3;
+    int pixmapWidth = static_cast<int>(pixmapHeight / aspectRatio);
+
+    if (showDetails) {
+        setContentsMargins(3, 3, 3, 3);
+        setFixedWidth(pixmapWidth + 150);
+        setFrameStyle(static_cast<int>(QFrame::Panel) | QFrame::Raised);
+    } else {
+        setFixedWidth(pixmapWidth + 20);
+        setFrameStyle(QFrame::NoFrame);
+    }
+
     pic = new CardInfoPictureWidget();
     pic->setObjectName("pic");
     text = new CardInfoTextWidget();
@@ -24,16 +39,13 @@ CardInfoDisplayWidget::CardInfoDisplayWidget(const CardRef &cardRef, QWidget *pa
     layout->setContentsMargins(0, 0, 0, 0);
     layout->setSpacing(0);
     layout->addWidget(pic, 0, Qt::AlignCenter);
-    layout->addWidget(text, 0, Qt::AlignCenter);
+    if (showDetails) {
+        layout->addWidget(text, 0, Qt::AlignCenter);
+    }
     setLayout(layout);
 
-    setFrameStyle(static_cast<int>(QFrame::Panel) | QFrame::Raised);
-
-    int pixmapHeight = QGuiApplication::primaryScreen()->geometry().height() / 3;
-    int pixmapWidth = static_cast<int>(pixmapHeight / aspectRatio);
     pic->setFixedWidth(pixmapWidth);
     pic->setFixedHeight(pixmapHeight);
-    setFixedWidth(pixmapWidth + 150);
 
     setCard(cardRef);
 

@@ -296,17 +296,19 @@ void AbstractCardItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
         scene()->clearSelection();
         setSelected(true);
     }
-    if (event->button() == Qt::LeftButton)
-        setCursor(Qt::ClosedHandCursor);
-    else if (event->button() == Qt::MiddleButton)
-        emit showCardInfoPopup(event->screenPos(), cardRef);
+    if (event->button() == Qt::LeftButton) {
+        if (event->modifiers() & Qt::ShiftModifier)
+            emit showCardInfoPopup(event->screenPos(), cardRef, false);
+        else
+            setCursor(Qt::ClosedHandCursor);
+    } else if (event->button() == Qt::MiddleButton)
+        emit showCardInfoPopup(event->screenPos(), cardRef, true);
     event->accept();
 }
 
 void AbstractCardItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
-    if (event->button() == Qt::MiddleButton)
-        emit deleteCardInfoPopup(cardRef.name);
+    emit deleteCardInfoPopup(cardRef.name);
 
     // This function ensures the parent function doesn't mess around with our selection.
     event->accept();

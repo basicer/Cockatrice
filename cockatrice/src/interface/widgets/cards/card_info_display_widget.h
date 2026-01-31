@@ -28,7 +28,10 @@ private:
     CardInfoTextWidget *text;
 
 public:
-    explicit CardInfoDisplayWidget(const CardRef &cardRef, QWidget *parent = nullptr, Qt::WindowFlags f = {});
+    explicit CardInfoDisplayWidget(const CardRef &cardRef,
+                                   QWidget *parent = nullptr,
+                                   bool showDetails = true,
+                                   Qt::WindowFlags f = {});
 
 public slots:
     void setCard(const ExactCard &card);

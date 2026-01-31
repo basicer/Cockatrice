@@ -14,13 +14,13 @@ Tab::Tab(TabSupervisor *_tabSupervisor)
     setAttribute(Qt::WA_DeleteOnClose);
 }
 
-void Tab::showCardInfoPopup(const QPoint &pos, const CardRef &cardRef)
+void Tab::showCardInfoPopup(const QPoint &pos, const CardRef &cardRef, bool showDetails)
 {
     if (infoPopup) {
         infoPopup->deleteLater();
     }
     currentCard = cardRef;
-    infoPopup = new CardInfoDisplayWidget(currentCard, nullptr,
+    infoPopup = new CardInfoDisplayWidget(currentCard, nullptr, showDetails,
                                           Qt::Widget | Qt::FramelessWindowHint | Qt::X11BypassWindowManagerHint |
                                               Qt::WindowStaysOnTopHint);
     infoPopup->setAttribute(Qt::WA_TransparentForMouseEvents);
